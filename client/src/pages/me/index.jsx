@@ -10,9 +10,9 @@ const Me = (props) => {
   const [trips, setTrips] = useState([]);
   useEffect(()=>{
     socket.emit('me');
-    apiService.getAllTrips()
+    apiService.getAllMyTrips()
     .then(res =>{
-      setTrips(res.data.listOfTrips)
+      setTrips(res.data.listOfMyTrips)
     })
   },[]);
   useEffect(()=>{

@@ -10,7 +10,7 @@ const Em = (props) => {
   })
   useEffect(()=>{
     if(props.user.userType !== 'volunteer'){
-      props.history.push('/me');
+      props.history.push('/private');
     }
   },[props.history, props.user.userType])
 
@@ -30,7 +30,7 @@ const Em = (props) => {
       :
         <>
           <button onClick={() => handleCreateTrip()}>Back</button>
-          <CreateTrip />
+
         </>
       }
 
