@@ -44,6 +44,8 @@ List all the team members. For example:
 2. Open the project directory and run npm install in the command line.
 3. Run npm start to execute the project in local.
 
+[Server Github](https://github.com/LuYeZhan/kiwiem-server)
+
 ## :bulb: Devstack
 
  - Client-side: React
