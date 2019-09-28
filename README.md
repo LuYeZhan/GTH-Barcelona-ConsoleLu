@@ -2,7 +2,7 @@
 Project submission for the `Global Travel Hackathon in Barcelona, by console.lu team`.
 
 **Write one sentence explaining what does your project.**
-Our idea is make travelling more accessible for people with special needs. For this reason we create Kiwi-them, wich is an app that will connect volunteers with people that needs help to travel. 
+Our idea is to make travelling more accessible for people with special needs. For this reason we create Kiwi-them, which is an app that will connect volunteers with people that needs help during the trip.
 
 ![Add a screenshot from your project. For example the main website page.](https://raw.githubusercontent.com/Global-Travel-Hackathon/GTH-Location-TeamName/master/screenshots/Global-Travel-Hackathon-image.png)
 
@@ -53,6 +53,7 @@ List all the team members. For example:
 Libraries:
  
  - React socket.io
+ - Gsap (Navbar)
 
 
 ## User Stories
