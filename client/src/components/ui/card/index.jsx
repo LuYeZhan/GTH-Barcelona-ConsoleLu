@@ -1,13 +1,10 @@
 import React, {useState}from 'react'
 import { ReactComponent as Ok } from '../../../svg/check.svg'
 import apiService from '../../../services/api-service'
-<<<<<<< HEAD
 import moment from 'moment'
-moment.locale('es')
 
-=======
 import {withRouter} from 'react-router-dom'
->>>>>>> c24fc3ca44a54cfcbf36ce0e6fb77655395a390f
+moment.locale('es')
 const Card = (props) => {
   const [thisAccepted, setthisAccepted] = useState(props.trip.thisAccepted)
   const handleRequest = (idTrip) => {
@@ -44,11 +41,7 @@ const Card = (props) => {
             }
           </ul>
           {thisAccepted ? 
-<<<<<<< HEAD
-            (<div className="chat-info"></div>)
-=======
-            (<button onClick={()=>checkChat(props.trip.owner)}>Chat</button>)
->>>>>>> c24fc3ca44a54cfcbf36ce0e6fb77655395a390f
+            (<button className="chat-info" onClick={()=>checkChat(props.trip.owner)}></button>)
             :
             (<button className="request" onClick={()=> handleRequest(props.trip._id)}><Ok/></button>)
           }
