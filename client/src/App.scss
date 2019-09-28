@@ -5,6 +5,7 @@
 
 /* Import UI components */
 @import 'components/ui/menu/menu';
+@import 'components/ui/message/message';
 
 
 /* Import pages */
@@ -15,6 +16,7 @@
 @import 'pages/em/em';
 @import 'pages/login/login';
 @import 'pages/signup/signup';
+@import 'pages/chat/chat';
 
 /* Reset */
 *{

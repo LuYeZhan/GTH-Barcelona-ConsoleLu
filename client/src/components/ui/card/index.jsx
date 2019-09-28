@@ -1,7 +1,7 @@
 import React, {useState}from 'react'
 import { ReactComponent as Ok } from '../../../svg/check.svg'
 import apiService from '../../../services/api-service'
-
+import {withRouter} from 'react-router-dom'
 const Card = (props) => {
   const [thisAccepted, setthisAccepted] = useState(props.trip.thisAccepted)
   const handleRequest = (idTrip) => {
@@ -12,6 +12,12 @@ const Card = (props) => {
         setthisAccepted(true)
       }
     })
+  }
+  const checkChat = (idUser) =>{
+    apiService.checkchat([props.user,idUser ])
+        .then(res => {
+          props.history.push(`/chat/${res.data._id}`);
+        })
   }
   return (
     <div className="trip-card-bg">
@@ -32,7 +38,7 @@ const Card = (props) => {
             }
           </ul>
           {thisAccepted ? 
-            (<div>Chat</div>)
+            (<button onClick={()=>checkChat(props.trip.owner)}>Chat</button>)
             :
             (<button className="request" onClick={()=> handleRequest(props.trip._id)}><Ok/></button>)
           }
@@ -42,4 +48,4 @@ const Card = (props) => {
   )
 }
 
-export default Card
+export default withRouter(Card)
