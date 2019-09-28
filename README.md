@@ -69,9 +69,9 @@ Libraries:
 
 ## Backlog
 
-Mailing: confirmation by email
-Ratings: users can rate each other
-Edit User Profile
+ - Mailing: confirmation by email
+ - Ratings: users can rate each other
+ - Edit User Profile
 
 # Client / Frontend
 
