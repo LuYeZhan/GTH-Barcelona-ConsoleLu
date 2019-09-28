@@ -8,9 +8,10 @@
 
 
 /* Import pages */
-
-@import 'pages/landing/landing';
 @import 'pages/me/me';
+@import 'pages/landing/landing';
+@import 'pages/login/login';
+@import 'pages/signup/signup';
 @import 'pages/createTrip/createTrip';
 
 /* Reset */

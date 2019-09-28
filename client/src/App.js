@@ -30,7 +30,7 @@ class App extends Component {
             <AnonRoute
               exact
               path="/signup"
-              render={(props)=> <> <Menu/> <Signup {...props}/> </>} />
+              render={(props)=> <> <Signup {...props}/> </>} />
             <AnonRoute
               exact
               path="/login"
