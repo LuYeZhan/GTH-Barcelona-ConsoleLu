@@ -1,8 +1,9 @@
 import React from 'react'
-import { Route, Redirect } from 'react-router-dom';
+import { Route,Redirect } from 'react-router-dom';
 import withAuth from '../../hoc/withAuth';
 
 const PrivateRoute = (props) => {
+  console.log(props)
   const { isLoggedIn, render ,user, ...rest} = props
   return (
     <>

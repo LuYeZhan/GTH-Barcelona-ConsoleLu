@@ -8,15 +8,14 @@ class AuthService {
     })
   }
 
-  signup(user) {   
-    const { name, surname, email, password, userType } = user;
-    return this.auth.post('/auth/signup', { name, surname, email, password, userType })
-      .then(({ data }) => data);
+  signup(user) {
+    return this.auth.post('/auth/signup', user)
+      .then(({data} ) => data);
   }
 
   login(user) {
-    const { email, password } = user;
-    return this.auth.post('/auth/login', {email, password})
+
+    return this.auth.post('/auth/login', user)
       .then(({ data }) => data);
   }
 

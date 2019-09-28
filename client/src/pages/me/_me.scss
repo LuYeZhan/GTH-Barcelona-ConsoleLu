@@ -1,0 +1,144 @@
+.user-img-container{
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  position: absolute;
+  top: 15px;
+  left: 5%;
+  border: 5px solid white;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  box-shadow: 0px 2px 2px $second-color;
+  img{
+    position: absolute;
+    object-fit: cover;
+    width: 120%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    z-index: 1;
+  }
+}
+.traveller-trips{
+  background-color:white;
+  padding-top: 30px;
+  border-radius:20px 20px 0px 0px;
+  .trip-addnew{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    position: fixed;
+    bottom:30px;
+    overflow: hidden;
+    background:$second-color url(./images/booking.svg);
+    z-index:3;
+    left: 50%;
+    transform: translate(-50%);
+    background-position: center;
+    background-repeat: no-repeat;
+    border:none;
+    background-size: 45%;
+    box-shadow: 0px 2px 5px 2px rgba(0,0,0,0.5);
+  }
+}
+.traveller-bg-header{
+    width: 100%;
+    height: 150px;
+    position: fixed;
+    top: 0;
+    z-index: -1;
+    background: $bg-color;
+}
+.trip-card-container{
+  padding-bottom: 60px;
+  .trip-card-bg{
+    background-color: $first-color;
+    width: 90%;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 10px;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 20px;
+    img{
+      opacity: 0.5;
+      position: absolute;
+      object-fit: cover;
+      width: 120%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%,-50%);
+      z-index: 1;
+    }
+    .trip-card{
+      z-index: 2;
+      color: white;
+      position: relative;
+      .trip-card-from{
+        color:$third-color;
+        font-size: 1.2em;
+      }
+      .trip-card-to{
+        font-size: 2.4em;
+        font-weight: bold;
+      }
+      .trip-card-date{
+        @extend .trip-card-from;
+        margin:20px 0;
+      }
+      hr{
+        color:white;
+        background: white;
+      }
+      ul{
+        list-style-type:none;
+        li{
+          margin: 10px 0;
+        }
+      }
+      .trip-request{
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        position: absolute;
+        overflow: hidden;
+        background: #DBAE62 url(./images/solidarity.svg);
+        z-index: 3;
+        background-position: center;
+        background-repeat: no-repeat;
+        border: 6px solid white;
+        right: 0;
+        background-size: 65%;
+        box-shadow: 0px 2px 5px 2px rgba(0,0,0,0.5);
+        font-size: 2.4em;
+    color: white;
+    font-weight: bold;
+      }
+    }
+  }
+  &after{
+      content: "";
+      opacity: 0.5;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      position: absolute;
+      z-index: -1;   
+  }
+}
+.trip-tab{
+  width: 20%;
+  margin: 0 auto;
+  display: block;
+  background: transparent;
+  border:none;
+  border-bottom:2px solid $second-color;
+  color:$second-color;
+  font-size: 1.3em;
+  padding-bottom:20px;
+  margin-bottom: 30px;
+}

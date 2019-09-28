@@ -2,7 +2,7 @@ import axios from 'axios';
 
 class ApiService {
   constructor() {
-    this.auth = axios.create({
+    this.trip = axios.create({
       baseURL: 'http://localhost:4000/api',
       withCredentials: true,
     })
@@ -13,16 +13,16 @@ class ApiService {
     .then(response => response)
   }
   checkchat(users){
-    return this.auth.post('/checkchat', {users})
+    return this.trip.post('/checkchat', {users})
     .then(data => data)
   }
   pushmessage(data){
-    return this.auth.post('/pushmessage', data)
+    return this.trip.post('/pushmessage', data)
     .then(data => data)
 
   }
   getChat(data){
-    return this.auth.post('/getchat', data)
+    return this.trip.post('/getchat', data)
     .then(data => data)
   }
   getAllMyTrips() {
