@@ -15,11 +15,13 @@ const Me = (props) => {
       setTrips(res.data.listOfMyTrips)
     })
   },[]);
+
   useEffect(()=>{
     if(props.user.userType !== 'traveller'){
       props.history.push('/em');
     }
   },[props.history, props.user.userType])
+  
   useEffect(()=>{
     socket.on('me', tripsfrom => {
       console.log(tripsfrom, 'he entrado')
@@ -38,7 +40,7 @@ const Me = (props) => {
           <div className="trip-card-bg" key={i}>
             <img src={el.img} alt='city image'/>
             <div className="trip-card">
-              <button className="trip-request">{el.request.length}</button>
+              <button className="trip-request">{el.requests.length}</button>
               <p className="trip-card-from">{el.from}</p>
               <p className="trip-card-to">{el.to}</p>
               <hr></hr>
