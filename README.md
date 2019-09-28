@@ -96,12 +96,15 @@ Create Profile Em:
   - auth.me()
   - auth.getUser() // synchronous
   
-- Trip Service
+- Api Service
 
-  - trip.add(id)
-  - trip.edit(id)
-  - trip.joinrequest(id)
-  - trip.delete(id)
+  - getAllTrips()
+  - getAllMyTrips()
+  - addOneTrip()
+  - editOneTrip(id)
+  - deleteOneTrip(id)
+  - getChat()
+  - pushMessage()
   
 
 # Server / Backend
@@ -113,7 +116,11 @@ Create Profile Em:
 
 ```javascript
 {
-  username: {
+  name: {
+    type: String,
+    required: true
+  },
+  surname: {
     type: String,
     required: true
   },
@@ -126,61 +133,133 @@ Create Profile Em:
     type: String,
     required: true
   },
-  type: {
+  userType: {
     type: String,
-    required: true
+    enum: ['volunteer', 'traveller']
   },
+  pocket: {
+    type: Number
+  },
+  comments: [{
+    type: ObjectId,
+    ref: 'Comment'
+  }],
   myTrips: [{
     type: ObjectId,
     ref: 'Trip'
-  }],
+  }]
 }, {
   timestamps: {
     createdAt: 'created_at',
     updatedAt: 'updated_at'
-  },
+  }
 }
 ```
 
 - Trip model
 
 ```javascript
-   username: {
+   from: {
     type: String,
     required: true
   },
-  email: {
-    type: String,
-    required: true,
-    unique: true
-  },
-  password: {
+  to: {
     type: String,
     required: true
   },
-  type: {
-    type: String,
+  startDate: {
+    type: Date,
     required: true
   },
-  myTrips: [{
-    type: ObjectId,
-    ref: 'Trip'
+  endDate: {
+    type: Date,
+    required: true
+  },
+  needs: [{
+    type: String
   }],
+  requests: [{
+    type: ObjectId,
+    ref: 'User'
+  }],
+  img: {
+    type: String
+  },
+  thisAccepted: {
+    type: Boolean,
+    default: false
+  },
+  owner: String
+},
+
+{
+  timestamps: true
+}
+```
+
+- Comment model
+```javascript
+title: {
+    type: String,
+    required: true
+  },
+  description: {
+    type: String,
+    required: true
+  },
+  rating: {
+    type: Number,
+    required: true
+  }
 }, {
   timestamps: {
     createdAt: 'created_at',
     updatedAt: 'updated_at'
-  },
+  }
 ```
 
-- Comment model
-
-
 - Message model
+```javascript
+user: {
+    type: ObjectId,
+    ref: 'User'
+  },
+  message: {
+    type: String
+  },
+  notification: {
+    emitter: ObjectId,
+    toUser: ObjectId,
+    isViewed: {
+      type: Boolean,
+      default: false
+    }
+  }
 
+}, {
+  timestamps: {
+    createdAt: 'created_at',
+    updatedAt: 'updated_at'
+  }
+```
 
 - Chat model
-
+```javascript
+users: {
+    type: [ObjectId],
+    ref: 'User'
+  },
+  messages: {
+    type: [ObjectId],
+    ref: 'Message'
+  }
+},
+{
+  timestamps: {
+    createdAt: 'created_at',
+    updatedAt: 'updated_at'
+  }
+```
 ## Slides
 
 https://docs.google.com/presentation/d/1tSe81_jLoUn6ojFT_cLBAUsuWlUVQUJWR3gswHzyxhA/edit?usp=sharing
