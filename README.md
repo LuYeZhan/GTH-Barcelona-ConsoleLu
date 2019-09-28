@@ -12,8 +12,7 @@ Our project is focused in the accesibility and we use ReactJS in the Frontend an
 
 ![* SDKs used in the project;
 * APIs used in the project; 
-Tequila by kiwi
-Unsplash API
+Rest API
 * Any assets used in the project;
 
 * Any libraries used in the project;
