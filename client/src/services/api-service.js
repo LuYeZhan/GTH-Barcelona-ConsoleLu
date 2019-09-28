@@ -7,7 +7,9 @@ class ApiService {
       withCredentials: true,
     })
   }
-
+  pullRequest(data) {
+    return this.trip.post('/pullrequest', data)
+  }
   getAllTrips() {
     return this.trip.get('/em')
     .then(response => response)
