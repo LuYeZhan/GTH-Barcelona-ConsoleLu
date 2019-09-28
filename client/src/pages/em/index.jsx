@@ -27,8 +27,6 @@ const Em = (props) => {
     }
   },[props.history, props.user.userType])
 
-  
-
  const HandleTabToogle =()=>{
   setSelectedTab(!selectedTab)
  } 
@@ -73,7 +71,6 @@ const Em = (props) => {
         <button className={`trip-tab-volunteer ${selectedTab ? '' : "selected-tab" }`} onClick={()=> HandleTabToogle()}>ALL TRIPS</button>
         <button className={`trip-tab-volunteer ${selectedTab ? "selected-tab" :'' }`} onClick={()=> HandleTabToogle()}>MY TRIPS</button>
       </div>
-      {renderAlltrips()}
       {renderAlltrips()}
       
       </section>
