@@ -1,0 +1,92 @@
+.login {
+  @include flexCenter(center);
+  font-family: 'Blogger Sans';
+  font-weight: 400;
+  background: $second-color;
+  height: 100vh;
+  .login-content {
+    @include flexCenter(center);
+    background: white;
+    height: 82vh;
+    width: 100vw;
+    padding: 24px 0;
+    border-radius: 18px;
+  }
+}
+
+.logo {
+  width: 100px;
+  margin: 24px 0;
+}
+
+.title {
+  width: 70px;
+  height: 25px;
+  text-align: left;
+  font-size: 20px;
+  letter-spacing: 0;
+  color: $second-color;
+  opacity: 1;
+  padding-bottom: 30px;
+  border-bottom: 1px solid $second-color;
+  margin-bottom: 55px;
+}
+
+.small-title {
+  text-decoration: none;
+  color: $second-color;
+  margin-left: 10px;
+}
+
+.login-form {
+  @include flexCenter(initial);
+  width: 100vw;
+  padding: 35px;
+  .input {
+    @include formInput();
+  }
+  .label {
+    @include formLabel();
+  }
+  .button-submit {
+    width: 349px;
+    height: 70px;
+    transform: matrix(1, 0, 0, 1, 0, 0);
+    background: #DBAE62;
+    border-radius: 9px;
+    opacity: 1;
+    margin-top: 0;
+    .button-title {
+      @include buttonTitle(26px, #FFFFFF, 0);
+    }
+  }
+}
+
+.user-types {
+  @include flexCenter(center);
+  margin-bottom: 85px;
+  .signup-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 388px;
+    height: 147px;
+    border: 1px solid #CFCFCF;
+    border-radius: 18px;
+    opacity: 1;
+    margin-bottom: 25px;
+  }
+  .arrow {
+    width: 69px;
+    height: 67px;
+    background: #CFCFCF;
+    border-radius: 9px;
+    font-size: 35px;
+    color: #FFFFFF;
+    border: none;
+  }
+  .span-title {
+    font-size: 26px;
+    color: #DBAE62;
+  }
+}
