@@ -81,8 +81,8 @@ const CreateTrip = (props) => {
             </div>
           </div>
           <div className='submit'>
-            <p>The volunteer will get {Number(trip.needs1) + Number(trip.needs2) + Number(trip.needs3) + 1000}</p>
-            <input type='submit' value='Add trip' /> 
+            <p>The volunteer will get {Number(trip.needs1) + Number(trip.needs2) + Number(trip.needs3) + 1000} points</p>
+            <input type='submit' value='Add new trip' /> 
           </div>
         </form>
       </section>
