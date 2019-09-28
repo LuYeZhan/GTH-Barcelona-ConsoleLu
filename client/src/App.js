@@ -5,8 +5,10 @@ import PrivateRoute from './components/routes/PrivateRoute.js';
 import AnonRoute from './components/routes/AnonRoute.js';
 
 import Em from './pages/me';
+import CreateTrip from './pages/createTrip';
 import Signup from './pages/signup';
 import Login from './pages/login';
+import Landing from './pages/landing';
 
 import Menu from './components/ui/menu'
 
@@ -21,12 +23,17 @@ class App extends Component {
         <AuthProvider>
           
             <Switch>
-              <AnonRoute path="/signup" component={Signup} />
-              <AnonRoute path="/login" component={Login} />
+              <AnonRoute exact path="/" render={props => <><Landing {...props}/></>} />
+              <AnonRoute path="/signup" render={props => <><Signup {...props}/></>} />
+              <AnonRoute path="/login" render={props => <><Login {...props}/></>} />
               <PrivateRoute
-              exact
-              path="/private"
-              render={props => <><Menu/> <Em {...props} /></> } />
+                exact
+                path="/private"
+                render={props => <><Menu/> <Em {...props} /></> } />
+              <PrivateRoute
+                exact
+                path="/trip/add"
+                render={props => <><Menu/> <CreateTrip {...props} /></> } />
             </Switch>
 
         </AuthProvider>
