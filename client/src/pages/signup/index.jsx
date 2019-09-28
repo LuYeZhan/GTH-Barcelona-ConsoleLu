@@ -38,7 +38,6 @@ const Signup = (props) => {
   
   return (
     <div className="login">
-    {console.log(user.userType)}
       <WikiEm className="logo"/>
         <div className="login-content">
           {!user.form && user.userType === null ? 
