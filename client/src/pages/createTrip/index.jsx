@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
 import withAuth from '../../hoc/withAuth.js';
 import apiService from '../../services/api-service'
+import io from 'socket.io-client'
+
+const socket = io(process.env.REACT_APP_BACKEND_DOMAIN)
+
 const CreateTrip = (props) => {
   const [ trip, setTrip ] = useState({
     from: '',
@@ -30,6 +34,7 @@ const CreateTrip = (props) => {
     })
       .then((res) => {
         if(res.status === 200){
+          socket.emit('me')
           props.history.push('/')
         }
       })

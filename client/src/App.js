@@ -5,6 +5,7 @@ import PrivateRoute from './components/routes/PrivateRoute.js';
 import AnonRoute from './components/routes/AnonRoute.js';
 
 import Em from './pages/me';
+import Me from './pages/em';
 import CreateTrip from './pages/createTrip';
 import Signup from './pages/signup';
 import Login from './pages/login';
@@ -30,6 +31,10 @@ class App extends Component {
                 exact
                 path="/private"
                 render={props => <><Menu/> <Em {...props} /></> } />
+              <PrivateRoute
+                exact
+                path="/em"
+                render={props => <><Menu/> <Me {...props} /></> } />
               <PrivateRoute
                 exact
                 path="/trip/add"

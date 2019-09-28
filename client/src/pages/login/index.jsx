@@ -34,15 +34,13 @@ const Login = (props) =>  {
         <div className="login">
           <WikiEm className="logo"/>
           <div className="login-content">
-            <p className="title">LOG IN</p>
+            <button className="login-tab">LOG IN</button>
             <form className="login-form" onSubmit={(e)=>handleFormSubmit(e)}>
               <label className="label" htmlFor='email'>Email</label>
               <input className="input" id='email' type='email' name='email' value={user.email} onChange={(e)=>handleChange(e)}/>
               <label htmlFor='password'>Password</label>
               <input className="input" id='password' type='password' name='password' value={user.password} onChange={(e)=>handleChange(e)} />
-              <button className="button-submit">
-                <input className="button-title" type='submit' value='LOG IN' />
-              </button>
+                <button className="login-button-submit" type='submit'>LOG IN</button>   
             </form>
             {errors && <p className="error">{errors}</p>}
             <div>
