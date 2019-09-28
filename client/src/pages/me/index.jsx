@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react'
 import withAuth from '../../hoc/withAuth';
+import { Link } from 'react-router-dom'
 import io from 'socket.io-client'
 import apiService from '../../services/api-service'
 const socket = io(process.env.REACT_APP_BACKEND_DOMAIN)
@@ -11,7 +12,7 @@ const Me = (props) => {
     socket.emit('me');
     apiService.getAllTrips()
     .then(res =>{
-      setTrips(res.data)
+      setTrips(res.data.listOfTrips)
     })
   },[]);
   useEffect(()=>{
@@ -35,7 +36,7 @@ const Me = (props) => {
         trips.map((el,i)=>{
           return (
           <div className="trip-card-bg" key={i}>
-            {/* <img src={el.img} alt='city image'/> */}
+            <img src={el.img} alt='city image'/>
             <div className="trip-card">
               <button className="trip-request">{el.request.length}</button>
               <p className="trip-card-from">{el.from}</p>
@@ -55,7 +56,7 @@ const Me = (props) => {
         })
       : <h1>No trips created yet</h1>}
     </article>
-        <button className="trip-addnew"></button>
+        <Link to="/trip/add" className="trip-addnew"></Link>
     </section>
   )
 }

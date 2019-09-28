@@ -19,7 +19,8 @@ const CreateTrip = (props) => {
       to, 
       startDate: new Date(startDate),
       endDate: new Date(endDate),
-      needs
+      needs,
+      owner: props.user._id
     })
       .then((res) => {
         if(res.status === 200){
