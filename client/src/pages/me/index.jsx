@@ -1,6 +1,8 @@
 import React, {useEffect, useState} from 'react'
-import withAuth from '../../hoc/withAuth.js';
+import withAuth from '../../hoc/withAuth';
+import io from 'socket.io-client'
 
+const socket = io(process.env.REACT_APP_BACKEND_DOMAIN)
 const data = 
 [{ 
   from: 'Madrid',
@@ -12,8 +14,25 @@ const data =
   img:'https://static.independent.co.uk/s3fs-public/thumbnails/image/2019/08/07/08/paris.jpg?w968h681',
 }]
 
+
 const Me = (props) => {
-  const [trips,setTrips] = useState(data)
+    const [trips,setTrips] = useState(data)
+  // const [trips, setTrips] = useState([]);
+  // useEffect(()=>{
+  //   socket.emit('me');
+  // // eslint-disable-next-line react-hooks/exhaustive-deps
+  // },[]);
+  useEffect(()=>{
+    if(props.user.userType !== 'traveller'){
+      props.history.push('/em');
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  },[])
+  useEffect(()=>{
+    socket.on('meList', trips => {
+      console.log(trips, 'he entrado')
+    })
+  })
 
   return (
     
