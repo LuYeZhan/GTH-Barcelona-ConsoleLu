@@ -35,6 +35,10 @@ const CreateTrip = (props) => {
   }
 
     return (
+      <section className="traveller-trips-form">
+        <div className="traveller-bg-header"></div>
+        <div className="user-img-container" style={{backgroundImage:`url(${props.user.profilePic})` }}></div>
+        <button className="trip-tab">Add new TRIP</button>
         <form onSubmit={(e)=>handleFormSubmit(e)}>
           <div>
             <label htmlFor='from'>From:</label>
@@ -58,6 +62,7 @@ const CreateTrip = (props) => {
           </div>
           <input type='submit' value='Add trip' /> 
         </form>
+      </section>
     )
   
 }
