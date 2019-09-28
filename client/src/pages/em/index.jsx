@@ -4,7 +4,8 @@ import CreateTrip from './../createTrip'
 import withAuth from '../../hoc/withAuth'
 
 const Em = (props) => {
-
+  console.log(props);
+  
   const [ mainState, setMainState ] = useState({
     createTrip: false,
   })
