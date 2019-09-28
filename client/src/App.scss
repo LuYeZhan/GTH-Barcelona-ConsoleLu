@@ -8,7 +8,7 @@
 
 
 /* Import pages */
-
+@import 'pages/me/me';
 @import 'pages/landing/landing';
 @import 'pages/login/login';
 @import 'pages/signup/signup';
@@ -24,6 +24,9 @@
 body{
   font-family: $font;
   color: $first-color;
+}
+button{
+  font-family: $font;
 }
 .loading-container{
   position: absolute;

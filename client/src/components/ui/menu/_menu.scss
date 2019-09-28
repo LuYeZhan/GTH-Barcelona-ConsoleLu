@@ -21,6 +21,7 @@
       pointer-events: auto;
       -webkit-appearance: button;
       text-transform: none;
+      z-index: 99999999;
     
       @include media('medium'){
         width: 41px;
@@ -79,10 +80,9 @@
  
   .dash-menu{
     width: 100%;
-    height: calc(100vh - 65px);
+    height: calc(100vh);
     position: absolute;
     pointer-events: none;
-    top:65px;
     z-index:99999;
 
     .container-dash{

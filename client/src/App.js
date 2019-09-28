@@ -42,7 +42,8 @@ class App extends Component {
             <PrivateRoute
               exact
               path="/me"
-              render={props => <><Menu/> <Me {...props} /></> } />
+              render={props => <><Menu/> <Me {...props} /> </>} />
+            
             <PrivateRoute
               exact
               path="/chat/:id"
