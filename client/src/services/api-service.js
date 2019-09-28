@@ -21,7 +21,10 @@ class ApiService {
   pushmessage(data){
     return this.trip.post('/pushmessage', data)
     .then(data => data)
-
+  }
+  getmessages(id){
+    return this.trip.post('/getmessages', id)
+    .then(res => res)
   }
   getChat(data){
     return this.trip.post('/getchat', data)

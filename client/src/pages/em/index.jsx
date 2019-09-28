@@ -27,8 +27,6 @@ const Em = (props) => {
     }
   },[props.history, props.user.userType])
 
-  
-
  const HandleTabToogle =()=>{
   setSelectedTab(!selectedTab)
  } 
@@ -52,6 +50,7 @@ const Em = (props) => {
           img:trip.img,
           needs:trip.needs,
           thisAccepted:trip.thisAccepted,
+          owner: trip.owner
         }
       }
       user={props.user._id}
@@ -70,10 +69,9 @@ const Em = (props) => {
    
     
       <div className="trip-tab-volunteer-container">
-        <button className={`trip-tab-volunteer ${selectedTab ? '' : "selected-tab" }`} onClick={HandleTabToogle}>ALL TRIPS</button>
-        <button className={`trip-tab-volunteer ${selectedTab ? "selected-tab" :'' }`} onClick={HandleTabToogle}>MY TRIPS</button>
+        <button className={`trip-tab-volunteer ${selectedTab ? '' : "selected-tab" }`} onClick={()=> HandleTabToogle()}>ALL TRIPS</button>
+        <button className={`trip-tab-volunteer ${selectedTab ? "selected-tab" :'' }`} onClick={()=> HandleTabToogle()}>MY TRIPS</button>
       </div>
-      {renderAlltrips()}
       {renderAlltrips()}
       
       </section>

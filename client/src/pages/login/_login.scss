@@ -44,7 +44,7 @@
 .login-form {
   @include flexCenter(initial);
   width: 100vw;
-  padding: 35px;
+  padding: 0px 35px 20px 35px;
   .input {
     @include formInput();
 

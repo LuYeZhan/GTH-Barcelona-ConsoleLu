@@ -1,7 +1,7 @@
 import React,{ useState, useEffect, useRef } from 'react'
 import withAuth from '../../hoc/withAuth'
 import { Sk } from './socket'
-import authService from '../../services/auth-service'
+import apiService from '../../services/api-service'
 import moment from 'moment';
 import 'moment/locale/es';
 import Message from '../../components/ui/message'
@@ -63,10 +63,10 @@ useEffect(()=>{
       idChat,
       user: props.user._id
     }
-    authService.getChat(data)
+    apiService.getChat(data)
     .then(res =>{
       const userChat = res.data.users.filter(e=> e!== data.user).toString()
-      authService.getuser(userChat)
+      apiService.getuser(userChat)
       .then(res=>{
         setOtherUser(res.data)
       })
@@ -74,7 +74,7 @@ useEffect(()=>{
     .catch(err=>{
       setErrors(err.response)
     })
-    authService.getmessages({idChat, limit, offset})
+    apiService.getmessages({idChat, limit, offset})
     .then(res => {
       setTotalMessages(res.data.total)
       setOldMessages(res.data.messages)
@@ -97,7 +97,7 @@ useEffect(()=>{
     const idChat = props.match.params.id;
      setCont(cont+1)
      if(offset - limit > 0){
-       authService.getmessages({idChat, limit, offset})
+       apiService.getmessages({idChat, limit, offset})
        .then(res => {
          const newMessages = res.data.messages.concat(oldmessages)
          setOldMessages(newMessages)
@@ -108,7 +108,7 @@ useEffect(()=>{
          }
        })
      } else {
-      authService.getmessages({idChat, limit, offset: -1})
+      apiService.getmessages({idChat, limit, offset: -1})
       .then(res => {
         if(res.data.all){
           const newMessages = res.data.messages
@@ -152,7 +152,7 @@ useEffect(()=>{
         date: new Date()
       }
       
-      authService.pushmessage({body,user: props.user._id, idChat, toUser})
+      apiService.pushmessage({body,user: props.user._id, idChat, toUser})
       setMessages([...messages, message]);
       socket.WriteMessage(message);
       e.target.value = ''
