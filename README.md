@@ -292,11 +292,11 @@ users: {
 ```
 ## Slides
 
-https://docs.google.com/presentation/d/1tSe81_jLoUn6ojFT_cLBAUsuWlUVQUJWR3gswHzyxhA/edit?usp=sharing
+[Slides](https://docs.google.com/presentation/d/1l9CZYzxdJYJZoWOtZVk07OSwfgNeEs07GHiAZwBIl7U/edit?usp=sharing)
 
 ## Wireframes
 
-https://xd.adobe.com/spec/40fca547-812f-4069-74c1-09f1d04427b5-36cd/
+[Wireframes](https://xd.adobe.com/spec/40fca547-812f-4069-74c1-09f1d04427b5-36cd/)
 
 ## :warning: Licence
 
