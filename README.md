@@ -136,7 +136,7 @@ Edit User Profile
 | DELETE      | `/trip/delete/:id`     | {id}                         | 201            | 400          | Delete one trip  
 | POST        | `/pushmessage` | {}                           | 201            | 400          | Create a message                                          |
 | POST         | `/checkchat`       |           | 200            | 400          | check chat                                            |
-| DELETE      | `/activity/:id/delete`     | {id}                         | 201            | 400          | delete activity                                            |
+
 
 ## Models
 
