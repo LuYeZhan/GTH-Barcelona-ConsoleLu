@@ -78,47 +78,12 @@ const Em = (props) => {
     <section className="traveller-trips">
       <div className="traveller-bg-header"></div>
       <div className="user-img-container" style={{backgroundImage:`url(${props.user.profilePic})` }}></div>
-<<<<<<< HEAD
-    <button className="trip-tab">TRIPS</button>
-    <article className="trip-card-container" ></article>
-      {trips.length >0 
-      ?
-      (trips.map(trip => {
-        return(
-          <div className="trip-card-bg" key={trip._id}>
-            <img src={trip.img} alt='city image'/>
-            <div className="trip-card">
-              <button className="trip-request">{trip.requests.length}</button>
-              <p className="trip-card-from">{trip.from}</p>
-              <p className="trip-card-to">{trip.to}</p>
-              <hr></hr>
-              <p className="trip-card-date">{trip.startDate} to {trip.endDate}</p>
-              <ul>
-              { trip.needs.length >0 ?
-              trip.needs.map((need,i)=>{
-                return (
-                  <li key={i}>{need}</li>)
-                })
-                :<li>No special needs</li>
-                }
-              </ul>
-
-              <button className="request" onClick={()=> handleRequest(trip._id)}><Ok/></button>
-
-            </div>
-          </div>
-        )
-      }))
-      :
-      (<div>no hay </div>)}
-=======
       <div className="trip-tab-volunteer-container">
         <button className={`trip-tab-volunteer ${selectedTab ? '' : "selected-tab" }`} onClick={HandleTabToogle}>ALL TRIPS</button>
         <button className={`trip-tab-volunteer ${selectedTab ? "selected-tab" :'' }`} onClick={HandleTabToogle}>MY TRIPS</button>
       </div>
       {renderAlltrips()}
       {renderAlltrips()}
->>>>>>> 6a9fa5cf8dc5ef3fa9fe3498dd8293ea9f9a1970
       </section>
     </>
   )
