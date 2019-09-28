@@ -3,7 +3,7 @@ import axios from 'axios';
 class ApiService {
   constructor() {
     this.auth = axios.create({
-      baseURL: 'http://localhost:4000/api',
+      baseURL: 'https://kiwicom-prod.apigee.net/v2',      
       withCredentials: true,
     })
   }
