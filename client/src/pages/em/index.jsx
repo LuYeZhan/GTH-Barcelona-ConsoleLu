@@ -28,7 +28,7 @@ const Em = (props) => {
   },[props.history, props.user.userType])
 
  const HandleTabToogle =()=>{
-  setSelectedTab(!setSelectedTab)
+  setSelectedTab(!selectedTab)
  } 
  const renderAlltrips = () =>{
   return(
@@ -68,8 +68,8 @@ const Em = (props) => {
       <div className="traveller-bg-header"></div>
       <div className="user-img-container" style={{backgroundImage:`url(${props.user.profilePic})` }}></div>
       <div className="trip-tab-volunteer-container">
-        <button className={`trip-tab-volunteer ${selectedTab ? '' : "selected-tab" }`} onClick={HandleTabToogle}>ALL TRIPS</button>
-        <button className={`trip-tab-volunteer ${selectedTab ? "selected-tab" :'' }`} onClick={HandleTabToogle}>MY TRIPS</button>
+        <button className={`trip-tab-volunteer ${selectedTab ? '' : "selected-tab" }`} onClick={()=> HandleTabToogle()}>ALL TRIPS</button>
+        <button className={`trip-tab-volunteer ${selectedTab ? "selected-tab" :'' }`} onClick={()=> HandleTabToogle()}>MY TRIPS</button>
       </div>
       {renderAlltrips()}
       {renderAlltrips()}
