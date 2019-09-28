@@ -3,6 +3,7 @@ import React, {useState, useEffect} from 'react'
 import CreateTrip from './../createTrip'
 import withAuth from '../../hoc/withAuth'
 import apiService from '../../services/api-service'
+import { ReactComponent as Ok } from '../../svg/check.svg'
 import io from 'socket.io-client'
 
 const socket = io(process.env.REACT_APP_BACKEND_DOMAIN)
@@ -28,6 +29,15 @@ const Em = (props) => {
     }
   },[props.history, props.user.userType])
 
+  const handleRequest = (idTrip) => {
+    const toSend = {idTrip, user:props.user._id}
+    apiService.pullRequest(toSend)
+    .then(res => {
+      if(res.status === 200){
+        setTrips()
+      }
+    })
+  }
 
   return (
     <>
@@ -57,6 +67,9 @@ const Em = (props) => {
                 :<li>No special needs</li>
                 }
               </ul>
+
+              <button className="request" onClick={()=> handleRequest(trip._id)}><Ok/></button>
+
             </div>
           </div>
         )
