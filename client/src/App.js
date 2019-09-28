@@ -42,7 +42,7 @@ class App extends Component {
               render={props => <><Menu/> <Em {...props} /> </>} />
             <MeRoute
               exact
-              path="/em"
+              path="/me"
               render={props => <><Menu/> <Me {...props} /> </>} />
             
             <PrivateRoute

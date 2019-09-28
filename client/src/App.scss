@@ -10,6 +10,7 @@
 /* Import pages */
 
 @import 'pages/landing/landing';
+@import 'pages/me/me';
 
 /* Reset */
 *{
@@ -21,6 +22,9 @@
 body{
   font-family: $font;
   color: $first-color;
+}
+button{
+  font-family: $font;
 }
 .loading-container{
   position: absolute;

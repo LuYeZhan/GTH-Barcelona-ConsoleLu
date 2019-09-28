@@ -1,0 +1,36 @@
+.traveller-trips{
+  height: 100vh;
+}
+.trip-card-container{
+
+  .trip-card{
+    width: 90%;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 10px;
+    background-size: cover;
+    background-position: center;
+  }
+  &after{
+      content: "";
+      opacity: 0.5;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      position: absolute;
+      z-index: -1;   
+  }
+}
+.trip-tab{
+  width: 20%;
+  margin: 0 auto;
+  display: block;
+  background: transparent;
+  border:none;
+  border-bottom:2px solid $second-color;
+  color:$second-color;
+  font-size: 1.3em;
+  padding-bottom:20px;
+  margin-bottom: 30px;
+}
