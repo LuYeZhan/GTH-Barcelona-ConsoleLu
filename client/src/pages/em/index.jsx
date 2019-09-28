@@ -50,6 +50,7 @@ const Em = (props) => {
           img:trip.img,
           needs:trip.needs,
           thisAccepted:trip.thisAccepted,
+          owner: trip.owner
         }
       }
       user={props.user._id}

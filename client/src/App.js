@@ -10,7 +10,7 @@ import CreateTrip from './pages/createTrip';
 import Signup from './pages/signup';
 import Login from './pages/login';
 import Landing from './pages/landing';
-
+import Chat from './pages/chat'
 import Menu from './components/ui/menu'
 
 import AuthProvider from './contexts/auth-context.js';
@@ -39,6 +39,10 @@ class App extends Component {
                 exact
                 path="/trip/add"
                 render={props => <><Menu/> <CreateTrip {...props} /></> } />
+              <PrivateRoute
+                exact
+                path="/chat/:id"
+                render={props => <><Menu/> <Chat {...props} /></> } />
             </Switch>
 
         </AuthProvider>
