@@ -36,6 +36,9 @@ const Em = (props) => {
   {trips.length >0 
   ?
   (trips.map(trip => {
+    const ami = trip.requests.some((elem)=>{
+      return(elem === props.user._id)
+    })
     return(
       <Card 
       key={trip._id} 
@@ -50,7 +53,8 @@ const Em = (props) => {
           img:trip.img,
           needs:trip.needs,
           thisAccepted:trip.thisAccepted,
-          owner: trip.owner
+          owner: trip.owner,
+          imon: ami
         }
       }
       user={props.user._id}

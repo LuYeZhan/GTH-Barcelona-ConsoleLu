@@ -101,6 +101,10 @@
       }
       .trip-request{
         width: 120px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-decoration: none;
         height: 120px;
         border-radius: 50%;
         position: absolute;

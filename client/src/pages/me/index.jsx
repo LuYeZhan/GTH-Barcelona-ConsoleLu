@@ -40,7 +40,7 @@ const Me = (props) => {
           <div className="trip-card-bg" key={i}>
             <img src={el.img} alt='city image'/>
             <div className="trip-card">
-              <button className="trip-request">{el.requests.length}</button>
+              <Link to={`/request/${el._id}`} className="trip-request">{el.requests.length}</Link>
               <p className="trip-card-from">{el.from}</p>
               <p className="trip-card-to">{el.to}</p>
               <hr></hr>
