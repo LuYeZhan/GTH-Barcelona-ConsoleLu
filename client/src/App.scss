@@ -10,6 +10,7 @@
 /* Import pages */
 
 @import 'pages/landing/landing';
+@import 'pages/me/me';
 @import 'pages/login/login';
 @import 'pages/signup/signup';
 @import 'pages/createTrip/createTrip';
@@ -42,4 +43,9 @@ body{
       @include transition(1s)
     }
   }
+}
+.error{
+  margin:0 0 20px;
+  color:red;
+  font-size: 10px;
 }

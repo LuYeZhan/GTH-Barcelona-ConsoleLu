@@ -2,8 +2,13 @@ import axios from 'axios';
 
 class ApiService {
   constructor() {
+<<<<<<< HEAD
     this.auth = axios.create({
       baseURL: 'https://kiwicom-prod.apigee.net/v2',      
+=======
+    this.trip = axios.create({
+      baseURL: 'http://localhost:4000/api',
+>>>>>>> 8e3a87978b1c8a92a6d65d5e76c921da18484690
       withCredentials: true,
     })
   }
@@ -13,16 +18,16 @@ class ApiService {
     .then(response => response)
   }
   checkchat(users){
-    return this.auth.post('/checkchat', {users})
+    return this.trip.post('/checkchat', {users})
     .then(data => data)
   }
   pushmessage(data){
-    return this.auth.post('/pushmessage', data)
+    return this.trip.post('/pushmessage', data)
     .then(data => data)
 
   }
   getChat(data){
-    return this.auth.post('/getchat', data)
+    return this.trip.post('/getchat', data)
     .then(data => data)
   }
   getAllMyTrips() {

@@ -1,29 +1,31 @@
 import React, { useState } from 'react';
 import withAuth from '../../hoc/withAuth.js';
-
+import apiService from '../../services/api-service'
 const CreateTrip = (props) => {
   const [ trip, setTrip ] = useState({
     from: '',
     to: '',
     startDate: '',
     endDate: '',
-    needs: '',
-    owner: ''
+    needs: ''
   })
   
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
-    props.createTrip({trip})
-      .then(() => {
-        setTrip({
-          from: '',
-          to: '',
-          startDate: '',
-          endDate: '',
-          needs: '',
-          owner: '',
-        });
+    const {from,to,startDate,endDate,needs} = trip;
+    apiService.addOneTrip({
+      from,
+      to, 
+      startDate: new Date(startDate),
+      endDate: new Date(endDate),
+      needs,
+      owner: props.user._id
+    })
+      .then((res) => {
+        if(res.status === 200){
+          props.history.push('/')
+        }
       })
       .catch( error => console.log(error) )
   }
