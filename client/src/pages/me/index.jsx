@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react'
 import withAuth from '../../hoc/withAuth';
+import { Link } from 'react-router-dom'
 import io from 'socket.io-client'
 import apiService from '../../services/api-service'
 const socket = io(process.env.REACT_APP_BACKEND_DOMAIN)
@@ -55,7 +56,7 @@ const Me = (props) => {
         })
       : <h1>No trips created yet</h1>}
     </article>
-        <button className="trip-addnew"></button>
+        <Link to="/trip/add" className="trip-addnew"></Link>
     </section>
   )
 }
