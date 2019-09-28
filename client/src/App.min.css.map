@@ -7,12 +7,12 @@
         "components/scss/_mixins.scss",
         "components/scss/_vars.scss",
         "components/ui/menu/_menu.scss",
+        "pages/createTrip/_createTrip.scss",
         "pages/landing/_landing.scss",
         "pages/me/_me.scss",
         "pages/em/_em.scss",
         "pages/login/_login.scss",
-        "pages/signup/_signup.scss",
-        "pages/createTrip/_createTrip.scss"
+        "pages/signup/_signup.scss"
     ],
     "names": [],
     "file": "App.min.css"
