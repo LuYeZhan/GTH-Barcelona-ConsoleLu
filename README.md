@@ -34,38 +34,42 @@ List all the team members. For example:
 
 ## :tada: Why is this so awesome?
 
-* It's the first app focused in the accesibility.
-* Connect people.
-* Make a better society by help each other.
+* It's the first app focused on connecting volunteers with people with special needs where volunteers can help these, according to their special requests while travelling.
+* Connecting people.
+* Make a better society by helping each other.
+* Social project.
 
 ## :hammer_and_wrench: Installation
 
 1. Clone the Repo.
-2. Open the project directory and run npm install in the command line
+2. Open the project directory and run npm install in the command line.
 3. Run npm start to execute the project in local.
 
 ## :bulb: Devstack
 
-...
+Client-side: React
+Server-side: NodeJs, MongoDB, Express
+
+Libraries:
+
 
 
 ## User Stories
 
--  **404:** As an anon/user I can see a 404 page if I try to reach a page that does not exist so that I know it's my fault
--  **500:** As an anon/user I can see a 500 page if the server isn't working
--  **Signup:** As a user I want to sign up on the webpage so that I can see my privates screens
--  **Login:** As a user I want to be able to log in on the webpage so that I can get back to my account
--  **Logout:** As a user I can logout from the platform so no one else can use it
--  **Add Trips:** As a user I can add a trips
--  **Join Trips:** As a user I can join to coleague trip
--  **Edit Trips:** As a user I can edit a trip
+-  **404:** As an anon/user I can see a 404 page if I try to reach a page that does not exist so that I know it's my fault.
+-  **500:** As an anon/user I can see a 500 page if the server isn't working.
+-  **Signup:** As a user I want to sign up on the webpage so that I can see my privates screens.
+-  **Login:** As a user I want to be able to log in on the webpage so that I can get back to my account.
+-  **Logout:** As a user I can logout from the platform so no one else can use it.
+-  **Add Trips:** As a user I can add a trips and post them so that other users can see them.
+-  **Join Trips:** As a user I can join to a trip I'm interested in.
+-  **Edit Trips:** As a user I can edit a trip I created.
 
 ## Backlog
 
-Mailing: confirmation by mailing
-Ratings: user's rate each other
-SplashPage:
-Create Profile Em:
+Mailing: confirmation by email
+Ratings: users can rate each other
+Edit User Profile
 
 # Client / Frontend
 
@@ -77,14 +81,25 @@ Create Profile Em:
 | `/auth/logout`            | n/a                  | anon only   | Navigate to '/' after logout, expire session            |
 | `/trip/add`            | TripAdd           | me user only   | Create a trip                                           |
 | `/trip/edit/:id`            | TripEdit           | me user only   | Update a trip                                         |
-| `/trip/delete/:id`            | n/a                  | me user only   | Delete a trip and redirect to '/'                   |
+| `/trip/delete/:id`            | n/a                  | me user only   | Delete a trip and redirect to '/me'                   |
 | `/me`            | n/a                  | me user only   | Delete a trip and redirect to '/'                   |
 | `/em`            | n/a                  | em user only   | Delete a trip and redirect to '/'                   |
 
 
 ## Components
 
-...
+ - Navbar 
+
+## Pages
+
+  - Chat
+  - createTrip
+  - em (Dashboard for volunteers)
+  - me (Dashboard for travelers)
+  - landing Page
+  - login
+  - signup
+  - NotFound
 
 ## Services
 
@@ -109,6 +124,19 @@ Create Profile Em:
 
 # Server / Backend
 
+| HTTP Method | URL                         | Request Body                 | Success status | Error Status | Description                                                  |
+| ----------- | --------------------------- | ---------------------------- | -------------- | ------------ | ------------------------------------------------------------ |
+| GET         | `/auth/profile    `           | Saved session                | 200            | 404          | Check if user is logged in and return profile page           |
+| POST        | `/auth/signup`                | {name, email, password}      | 201            | 404          | Checks if fields not empty (422) and user not exists (409), then create user with encrypted password, and store user in session |
+| POST        | `/auth/login`                 | {username, password}         | 200            | 401          | Checks if fields not empty (422), if user exists (404), and if password matches (404), then stores user in session |
+| POST        | `/auth/logout`                | (empty)                      | 204            | 400          | Logs out the user                                            |
+| GET         | `/me`                |                              |                | 400          | Show my trips                                         |
+| GET         | `/em`            |                         |                |              | Show all trips available                                  |
+| POST        | `/trip/add` | {from,to,startDate,endDate,needs}                            | 201            | 400          | Create and save a new trip                             |
+| DELETE      | `/trip/delete/:id`     | {id}                         | 201            | 400          | Delete one trip  
+| POST        | `/pushmessage` | {}                           | 201            | 400          | Create a message                                          |
+| POST         | `/checkchat`       |           | 200            | 400          | check chat                                            |
+| DELETE      | `/activity/:id/delete`     | {id}                         | 201            | 400          | delete activity                                            |
 
 ## Models
 
