@@ -8,8 +8,9 @@
 
 
 /* Import pages */
-@import 'pages/me/me';
+
 @import 'pages/landing/landing';
+@import 'pages/me/me';
 @import 'pages/login/login';
 @import 'pages/signup/signup';
 @import 'pages/createTrip/createTrip';
@@ -24,9 +25,6 @@
 body{
   font-family: $font;
   color: $first-color;
-}
-button{
-  font-family: $font;
 }
 .loading-container{
   position: absolute;
@@ -45,4 +43,9 @@ button{
       @include transition(1s)
     }
   }
+}
+.error{
+  margin:0 0 20px;
+  color:red;
+  font-size: 10px;
 }

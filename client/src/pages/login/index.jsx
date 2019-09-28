@@ -8,14 +8,18 @@ const Login = (props) =>  {
     email:'',
     password:''
   });
-
+  const [errors, setErrors] = useState('')
   const handleFormSubmit = (event) => {
     event.preventDefault();
 
     const { email, password } = user;
     props.login({ email, password })
     .then()
-    .catch( error => console.log(error) )
+    .catch( error => {
+      if(error.response.status === 404){
+        setErrors('Usuario no encontrado')
+      }
+    });
   }
 
   const handleChange = (event) => {  
@@ -40,6 +44,7 @@ const Login = (props) =>  {
                 <input className="button-title" type='submit' value='LOG IN' />
               </button>
             </form>
+            {errors && <p className="error">{errors}</p>}
             <div>
               <p>You don't have an accout yet?
                   <Link className="small-title" to={'/signup'}>SIGN UP</Link>
