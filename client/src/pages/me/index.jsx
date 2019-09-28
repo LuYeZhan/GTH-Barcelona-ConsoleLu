@@ -12,7 +12,7 @@ const Me = (props) => {
     socket.emit('me');
     apiService.getAllTrips()
     .then(res =>{
-      setTrips(res.data)
+      setTrips(res.data.listOfTrips)
     })
   },[]);
   useEffect(()=>{
@@ -36,7 +36,7 @@ const Me = (props) => {
         trips.map((el,i)=>{
           return (
           <div className="trip-card-bg" key={i}>
-            {/* <img src={el.img} alt='city image'/> */}
+            <img src={el.img} alt='city image'/>
             <div className="trip-card">
               <button className="trip-request">{el.request.length}</button>
               <p className="trip-card-from">{el.from}</p>
