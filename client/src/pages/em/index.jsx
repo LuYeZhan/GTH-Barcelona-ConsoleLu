@@ -2,38 +2,39 @@
 import React, {useState, useEffect} from 'react'
 import CreateTrip from './../createTrip'
 import withAuth from '../../hoc/withAuth'
+import apiService from '../../services/api-service'
+import io from 'socket.io-client'
+
+const socket = io(process.env.REACT_APP_BACKEND_DOMAIN)
 
 const Em = (props) => {
+  const [trips, setTrips] = useState([]);
 
-  const [ mainState, setMainState ] = useState({
-    createTrip: false,
+  useEffect(()=>{
+    socket.emit('me');
+    apiService.getAllTrips()
+    .then(res =>{
+      setTrips(res.data.listOfTrips)
+    })
+  },[]);
+  useEffect(()=>{
+    socket.on('me', tripsfrom => {
+      console.log(tripsfrom, 'he entrado')
+    })
   })
   useEffect(()=>{
     if(props.user.userType !== 'volunteer'){
-      props.history.push('/me');
+      props.history.push('/private');
     }
   },[props.history, props.user.userType])
 
-  const handleCreateTrip = () => {
-    setMainState({
-      createTrip: !mainState.createTrip
-    })
-  }
 
   return (
     <>
-      {!mainState.createTrip ?
-        <>
-          <h1>Welcome Paquito</h1>
-          <button onClick={() => handleCreateTrip()}>+</button>
-        </>
+      {trips.length >0 ?
+      (<div>si hay </div>)
       :
-        <>
-          <button onClick={() => handleCreateTrip()}>Back</button>
-          <CreateTrip />
-        </>
-      }
-
+      (<div>no hay </div>)}
     </>
   )
 }
