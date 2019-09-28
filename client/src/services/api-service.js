@@ -3,7 +3,7 @@ import axios from 'axios';
 class ApiService {
   constructor() {
     this.trip = axios.create({
-      baseURL: `${process.env.REACT_APP_BACKEND_DOMAIN}/api`,
+      baseURL: `${process.env.REACT_APP_BACKEND_DOMAIN}api`,
       withCredentials: true,
     })
   }

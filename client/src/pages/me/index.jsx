@@ -24,7 +24,7 @@ const Me = (props) => {
   
   useEffect(()=>{
     socket.on('me', tripsfrom => {
-      console.log(tripsfrom, 'he entrado')
+        setTrips(tripsfrom)
     })
   },[trips])
 
