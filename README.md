@@ -47,11 +47,12 @@ List all the team members. For example:
 
 ## :bulb: Devstack
 
-Client-side: React
-Server-side: NodeJs, MongoDB, Express
+ - Client-side: React
+ - Server-side: NodeJs, MongoDB, Express
 
 Libraries:
-
+ 
+ - React socket.io
 
 
 ## User Stories
