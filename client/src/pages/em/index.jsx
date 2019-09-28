@@ -12,8 +12,8 @@ const Em = (props) => {
     if(props.user.userType !== 'volunteer'){
       props.history.push('/me');
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  },[])
+  },[props.history, props.user.userType])
+
   const handleCreateTrip = () => {
     setMainState({
       createTrip: !mainState.createTrip

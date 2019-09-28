@@ -16,6 +16,7 @@ const AuthProvider = (props) => {
         isLoggedIn: true,
         user: user.data
       })
+      return user
     })
   }
 

@@ -15,8 +15,7 @@ const Me = (props) => {
     if(props.user.userType !== 'traveller'){
       props.history.push('/em');
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  },[])
+  },[props.history, props.user.userType])
   useEffect(()=>{
     socket.on('meList', trips => {
       console.log(trips, 'he entrado')

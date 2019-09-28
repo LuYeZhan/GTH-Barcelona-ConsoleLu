@@ -15,8 +15,6 @@ const Signup = (props) => {
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
-    
-
     props.signup(user)
       .then()
       .catch( error => console.log(error) )
