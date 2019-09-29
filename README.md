@@ -1,29 +1,15 @@
-# GTH-Barcelona-ConsoleLu
-Project submission for the `Global Travel Hackathon in Barcelona, by console.lu team`.
 
-**Write one sentence explaining what does your project.**
 Our idea is to make travelling more accessible for people with special needs. For this reason we create Kiwi-them, which is an app that will connect volunteers with people that needs help during the trip.
 
-![Add a screenshot from your project. For example the main website page.](https://raw.githubusercontent.com/Global-Travel-Hackathon/GTH-Location-TeamName/master/screenshots/Global-Travel-Hackathon-image.png)
 
-## :books: Description
+
 
 Our project is focused in the accesibility and we use ReactJS in the Frontend and NodeJS and Mongoose in the back to developed. 
 
-![* SDKs used in the project;
-* APIs used in the project; 
-Rest API
-* Any assets used in the project;
-
-* Any libraries used in the project;
-React
-socket.io
-* Any components not created at the hackathon;]
 
 
-## :hugs: Maintainers
+Project team members:
 
-List all the team members. For example:
 * [Jesus Cebader - Zebader](https://www.linkedin.com/in/jesuscebader/)
 * [Rundi Ye - Jundi](https://www.linkedin.com/in/rundiye/)
 * [Jan Giménez - Jan](https://www.linkedin.com/in/jan-gimenez-layola/)
@@ -31,30 +17,25 @@ List all the team members. For example:
 * [Lu Ye Zhan - Lu](https://www.linkedin.com/in/lu-ye-zhan-fullstackdeveloper/)
 
 
-## :tada: Why is this so awesome?
+Why is this so awesome?
 
 * It's the first app focused on connecting volunteers with people with special needs where volunteers can help these, according to their special requests while travelling.
 * Connecting people.
 * Make a better society by helping each other.
 * Social project.
 
-## :hammer_and_wrench: Installation
+Installation
 
 1. Clone the Repo.
-2. Open the project directory and run npm install in the command line.
+2. Open the project directory and run npm install in the command line in the client. npm run start-dev in the server.
 3. Run npm start to execute the project in local.
 
 [Server API Github](https://github.com/LuYeZhan/kiwiem-server)
 
-## :bulb: Devstack
+Devstack
 
- - Client-side: React
+ - Client-side: React, Saas(gsap), Socket.io
  - Server-side: NodeJs, MongoDB, Express
-
-Libraries:
- 
- - React socket.io
- - Gsap (Navbar)
 
 
 ## User Stories
@@ -72,7 +53,7 @@ Libraries:
 
  - Mailing: confirmation by email
  - Ratings: users can rate each other
- - Edit User Profile
+ - Edit user's Profile
 
 # Client / Frontend
 
