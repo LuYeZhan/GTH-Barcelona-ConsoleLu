@@ -31,6 +31,7 @@ class App extends Component {
                 exact
                 path="/private"
                 render={props => <><Menu/> <Em {...props} /></> } />
+                
               <PrivateRoute
                 exact
                 path="/em"
