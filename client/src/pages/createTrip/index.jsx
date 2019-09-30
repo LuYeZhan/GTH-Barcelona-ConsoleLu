@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import withAuth from '../../hoc/withAuth.js';
 import apiService from '../../services/api-service'
+import tequilaApiService from '../../services/tequilla-api-service'
 import io from 'socket.io-client'
 
 const socket = io(process.env.REACT_APP_BACKEND_DOMAIN)
@@ -8,28 +9,32 @@ const socket = io(process.env.REACT_APP_BACKEND_DOMAIN)
 const CreateTrip = (props) => {
   const [ trip, setTrip ] = useState({
     from: '',
+    fromtoapi:[],
     to: '',
+    totoapi:[],
     startDate: '',
     endDate: '',
     needs1: 0,
     needs2: 0,
     needs3: 0,
   })
-  
+const [isFrom, setIsFrom] = useState(false)
+const [isTo, setIsTo] = useState(false)
+const enableNeeds1 = useRef(false)
+const enableNeeds2 = useRef(false)
+const enableNeeds3 = useRef(false)
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
     const {from,to,startDate,endDate,needs1,needs2,needs3} = trip;
-    console.log(trip);
-    
     apiService.addOneTrip({
       from,
       to, 
       startDate: new Date(startDate),
       endDate: new Date(endDate),
-      needs1,
-      needs2,
-      needs3,
+      needs1: enableNeeds1.current,
+      needs2: enableNeeds2.current,
+      needs3: enableNeeds3.current,
       owner: props.user._id
     })
       .then((res) => {
@@ -42,10 +47,49 @@ const CreateTrip = (props) => {
   }
 
   const handleChange = (event) => {  
-    const {name, value} = event.target;
-    setTrip({...trip,[name]: value});
+    let {name, value} = event.target;
+
+    if(name === 'needs1'){
+        enableNeeds1.current = !enableNeeds1.current
+    }else if(name === 'needs2'){
+      enableNeeds2.current = !enableNeeds2.current
+    }else if(name === 'needs3'){
+      enableNeeds3.current = !enableNeeds3.current
+    }
+    
+    if(name !== 'needs1' || name !== 'needs2' || name !== 'needs3'){
+      setTrip({...trip,[name]: value});
+    }
   }
 
+  const handleSearch = (e, tripStr) => {
+    let {name, value} = e.target
+    if(tripStr === 'from'){
+      if(value.length > 3){
+        tequilaApiService.getIATA(value)
+        .then(res => {
+          setTrip({...trip, fromtoapi: res.data.locations})
+        })
+      }
+    }else{
+      console.log(trip)
+      if(value.length > 3){
+        tequilaApiService.getIATA(value)
+        .then(res => {
+          setTrip({...trip, totoapi: res.data.locations})
+        })
+      }
+    }
+  }
+  const handleSelectCity = (city, tripstr) => {
+    if(tripstr === 'from'){
+      setIsFrom(true);
+      setTrip({...trip, from: city})
+    }else{
+      setIsTo(true);
+      setTrip({...trip, to: city})
+    }
+  }
     return (
       <section className="traveller-trips-form">
         <div className="traveller-bg-header"></div>
@@ -55,11 +99,38 @@ const CreateTrip = (props) => {
           <div>
             <div>
               <label htmlFor='from'>From:</label>
-              <input id='from' type='text' name='from' value={trip.from} onChange={(e)=>handleChange(e)}/>
+              {!isFrom ?
+              <input id='from' type='text' name='from' value={trip.from} autoComplete='off' onKeyUp={e => handleSearch(e, 'from')} onChange={(e)=>handleChange(e)}/>
+              :
+              <input id='from' type='text' name='from' value={trip.from} autoComplete='off'  onChange={(e)=>handleChange(e)} readOnly/>
+              }
+              {!isFrom &&
+              <ul>
+              {trip.fromtoapi.length > 0 
+              ? (trip.fromtoapi.map(e=> {
+                return <li onClick={()=> handleSelectCity(e.id, 'from')} key={e.id}>{e.name}</li>
+              }))
+              :''}
+              </ul>
+              }
             </div>
             <div>
               <label htmlFor=''>To:</label>
-              <input id='to' type='text' name='to' value={trip.to} onChange={(e)=>handleChange(e)}/>
+              {!isTo ?
+              <input id='to' type='text' name='to' value={trip.to} autoComplete='off' onKeyUp={e => handleSearch(e, 'to')} onChange={(e)=>handleChange(e)}/>
+              :
+              <input id='to' type='text' name='to' value={trip.to} autoComplete='off' onChange={(e)=>handleChange(e)} readOnly/>
+              }
+              {!isTo &&
+              <ul>
+              {trip.totoapi.length > 0 
+              ? (trip.totoapi.map(e=> {
+                return <li onClick={()=> handleSelectCity(e.id, 'to')} key={e.id}>{e.name}</li>
+              }))
+              :''}
+              </ul>
+              }
+              
             </div>
           </div>
           <div>
@@ -75,9 +146,9 @@ const CreateTrip = (props) => {
           <div className='needs-container'>
               <label htmlFor='needs'><p>Add special needs</p></label>
             <div>
-              <label htmlFor='needs1'><input className='needs' id='needs1' type='checkbox' name='needs1' value={1000} onChange={(e)=>handleChange(e)}/>Help with luggage</label>
-              <label htmlFor="needs2"><input className='needs' id='needs2' type='checkbox' name='needs2' value={500} onChange={(e)=>handleChange(e)} />Ride home</label>
-              <label htmlFor="needs3"><input className='needs' id='needs3' type='checkbox' name='needs3' value={100} onChange={(e)=>handleChange(e)} />Language help</label>
+              <label htmlFor='needs1'><input className='needs' id='needs1' type='checkbox' name='needs1' value={trip.needs1} onChange={(e)=>handleChange(e)}/>Help with luggage</label>
+              <label htmlFor="needs2"><input className='needs' id='needs2' type='checkbox' name='needs2' value={trip.needs2} onChange={(e)=>handleChange(e)} />Ride home</label>
+              <label htmlFor="needs3"><input className='needs' id='needs3' type='checkbox' name='needs3' value={trip.needs3} onChange={(e)=>handleChange(e)} />Language help</label>
             </div>
           </div>
           <div className='submit'>

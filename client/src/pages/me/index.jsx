@@ -3,7 +3,9 @@ import withAuth from '../../hoc/withAuth';
 import { Link } from 'react-router-dom'
 import io from 'socket.io-client'
 import apiService from '../../services/api-service'
+import moment from 'moment';
 const socket = io(process.env.REACT_APP_BACKEND_DOMAIN)
+moment.locale('es')
 
 const Me = (props) => {
 
@@ -38,15 +40,15 @@ const Me = (props) => {
         trips.map((el,i)=>{
           return (
           <div className="trip-card-bg" key={i}>
-            <img src={el.img} alt='city image'/>
+            <img src={el.img} alt='city'/>
             <div className="trip-card">
               <Link to={`/request/${el._id}`} className="trip-request">{el.requests.length}</Link>
               <p className="trip-card-from">{el.from}</p>
               <p className="trip-card-to">{el.to}</p>
               <hr></hr>
-              <p className="trip-card-date">{el.startDate} to {el.endDate}</p>
+              <p className="trip-card-date">{moment(el.startDate).format('ll')} <br/> {moment(el.endDate).format('ll')}</p>
               <ul>
-              { el.needs.length >0 ?
+              { el.needs.length > 0 ?
               el.needs.map((need,i)=>{
                 return (
                   <li key={i}>{need}</li>)

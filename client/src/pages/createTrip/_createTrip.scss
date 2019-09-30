@@ -54,8 +54,14 @@
       margin: 1% 6%;
       justify-content: flex-start;
       div {
+        position: relative;
         display: flex;
         flex-direction: column;
+        ul{
+          position:absolute;
+          top:40px;
+          left: 0;
+        }
         input {
           width: 35vw;
           color: $second-color;
