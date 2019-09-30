@@ -4,7 +4,6 @@ class ApiService {
   constructor() {
     this.trip = axios.create({
       baseURL: `${process.env.REACT_APP_BACKEND_DOMAIN}api`,
-      withCredentials: true,
     })
   }
   pullRequest(data) {
