@@ -24,7 +24,7 @@ class App extends Component {
         <AuthProvider>
           
             <Switch>
-              <AnonRoute exact path="/" render={props => <><Landing {...props}/></>} />
+              <AnonRoute exact path="/" render={props => <><Signup {...props}/></>} />
               <AnonRoute path="/signup" render={props => <><Signup {...props}/></>} />
               <AnonRoute path="/login" render={props => <><Login {...props}/></>} />
               <PrivateRoute
