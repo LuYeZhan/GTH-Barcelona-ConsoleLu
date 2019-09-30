@@ -1,72 +1,65 @@
-import React, {useState, useEffect} from 'react';
+import React, { Component } from 'react';
 import authService from '../services/auth-service.js';
+
 export const AuthContext = React.createContext();
 
-const AuthProvider = (props) => {
-  const[client, setClient] = useState({
-    isLoading: true,
+class AuthProvider extends Component {
+  state = {
     isLoggedIn: false,
-    user: {}
-  })
-  const userInvite = (user) => {
-    return authService.invite(user)
+    user: {},
+    isLoading: true,
   }
 
-  const userCheckToken = (token) => {
-    return authService.checktoken(token)
-  }
-
-  const userComplete = (user) => {
-    return authService.complete(user)
+  userSignUp = (user) => {
+    return authService.signup(user)
     .then((user) => {
-      setClient({
-        ...client,
+      this.setState({
         isLoggedIn: true,
-        user: user.data
+        user
       })
     })
   }
 
-  const userLogin = (user) => {
+  userLogin = (user) => {
     return authService.login(user)
     .then((user) => {
-      setClient({
+      this.setState({
         isLoggedIn: true,
-        user: user.data
+        user
       })
     }) 
   }
 
-  const userLogout = () => {
+  userLogout = () => {
     return authService.logout()
     .then(() => {
-      setClient({
-        ...client,
+      this.setState({
         isLoggedIn: false,
         user: {}
       })
     })
   }
 
-  useEffect(()=>{
+  componentDidMount() {
     authService.me()
     .then(user => {
-      setClient({
+      this.setState({
         user,
         isLoggedIn: true,
         isLoading: false,
       })
     })
     .catch(() => {
-      setClient({
+      this.setState({
         isLoggedIn: false,
         user: {},
         isLoading: false,
       })
     })
-  },[])
+  }
 
-    const {user, isLoggedIn, isLoading} = client;
+  render() {
+    const {user, isLoggedIn, isLoading} = this.state;
     return (
       <>
         {isLoading ? <p>Loading...</p> : (
@@ -74,19 +67,17 @@ const AuthProvider = (props) => {
               {
                 user,
                 isLoggedIn,
-                login: userLogin,
-                complete: userComplete,
-                invite: userInvite,
-                logout: userLogout,
-                checktoken: userCheckToken
+                login: this.userLogin,
+                signup: this.userSignUp,
+                logout: this.userLogout
               }
             }>
-              {props.children}
+              {this.props.children}
             </AuthContext.Provider>
           )}
       </>
     );
-  
+  }
 }
 
 export default AuthProvider;

@@ -1,0 +1,119 @@
+.login {
+  @include flexCenter(center);
+  font-family: 'Blogger Sans';
+  font-weight: 400;
+  background: $second-color;
+  height: 100vh;
+  .login-content {
+    @include flexCenter(center);
+    background: white;
+    height: auto;
+    width: 100vw;
+    padding: 24px 0;
+    border-radius: 18px;
+  }
+}
+
+.logo {
+  width: 100px;
+  margin: 24px 0;
+}
+
+.title {
+  width: 70px;
+  height: 25px;
+  text-align: left;
+  font-size: 20px;
+  letter-spacing: 0;
+  color: $second-color;
+  opacity: 1;
+  padding-bottom: 30px;
+  border-bottom: 1px solid $second-color;
+  margin-bottom: 55px;
+}
+
+.small-title {
+  text-decoration: none;
+  color: $second-color;
+  margin-left: 10px;
+}
+
+.signup-form {
+  @include flexCenter(initial);
+  width: 100vw;
+  padding: 0px 35px 35px 35px;
+  .input {
+    @include formInput();
+  }
+  .label {
+    @include formLabel();
+  }
+  .signup-button-submit {
+    font-family: $font;
+    width: 100%;
+    height: 70px;
+    background:$third-color;
+    border-radius: 9px;
+    border:none;
+    font-size: 2em;
+    font-weight: bold;
+    text-align: center;
+    color:white;
+    line-height: 1;
+  }
+}
+
+.user-types {
+  @include flexCenter(center);
+  margin-bottom: 85px;
+  width: 100%;
+  .signup-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 95%;
+    border: 1px solid #CFCFCF;
+    border-radius: 18px;
+    opacity: 1;
+    margin-bottom: 25px;
+    padding: 10px;
+  }
+  .arrow {
+    width: 69px;
+    height: 67px;
+    background: #CFCFCF;
+    border-radius: 9px;
+    font-size: 35px;
+    color: #FFFFFF;
+    border: none;
+  }
+  .span-title {
+    font-size: 26px;
+    color: #DBAE62;
+  }
+}
+.span-title {
+  font-size: 26px;
+  color: #DBAE62;
+}
+.usertype-traveller-img{
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: #DBAE62 url(./images/world.svg);
+  z-index: 3;
+  background-position: center;
+  background-repeat: no-repeat;
+  border: 6px solid white;
+  background-size: 65%;
+  font-size: 2.4em;
+  color: white;
+  font-weight: bold;
+}
+.usertype-volunteer-img{
+  @extend .usertype-traveller-img;
+  background: #DBAE62 url(./images/solidarity_white.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+}

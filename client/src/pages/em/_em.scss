@@ -1,0 +1,25 @@
+.request{
+  width: 100%;
+  padding: 20px;
+  background: $second-color;
+  outline:none;
+  border:none;
+}
+.trip-tab-volunteer-container{
+  display: flex;
+  justify-content:flex-end; 
+  .trip-tab-volunteer{
+    margin: 0px 25px 0px 10px;
+    display: block;
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid #A2BD38;
+    color: #A2BD38;
+    font-size: 1.2em;
+    padding-bottom: 20px;
+    margin-bottom: 30px;
+  }
+  .selected-tab{
+    border-bottom: none;
+  }
+}

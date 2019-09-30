@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react'
-import { Power3, CSSPlugin, TweenMax  } from 'gsap/all';
+import { Power3, CSSPlugin, TweenMax  } from "gsap/all";
 
 const C = CSSPlugin;
 

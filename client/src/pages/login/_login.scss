@@ -1,0 +1,68 @@
+
+
+.login {
+  @include flexCenter(center);
+  font-family: 'Blogger Sans';
+  font-weight: 400;
+  background: $bg-color;
+  height: 100vh;
+  .login-content {
+    @include flexCenter(center);
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background: white;
+    padding: 24px 0;
+  }
+}
+
+.logo {
+  width: 100px;
+  margin: 24px 0;
+}
+
+.login-tab{
+  width: 20%;
+  margin: 0 auto;
+  display: block;
+  background: transparent;
+  border:none;
+  border-bottom:2px solid $second-color;
+  color:$second-color;
+  font-size: 1.3em;
+  padding-bottom:20px;
+  font-family: $font;
+  margin-bottom: 30px;
+}
+
+.small-title {
+  text-decoration: none;
+  color: $second-color;
+  margin-left: 10px;
+}
+
+.login-form {
+  @include flexCenter(initial);
+  width: 100vw;
+  padding: 0px 35px 20px 35px;
+  .input {
+    @include formInput();
+
+  }
+  .label {
+    @include formLabel();
+  }
+  .login-button-submit {
+    font-family: $font;
+    width: 100%;
+    height: 70px;
+    background:$third-color;
+    border-radius: 9px;
+    border:none;
+    font-size: 2em;
+    font-weight: bold;
+    text-align: center;
+    color:white;
+    line-height: 1;
+}
+}

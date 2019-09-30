@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import withAuth from '../../hoc/withAuth.js';
+import { ReactComponent as WikiEm } from '../../logotipo.svg'
+
 
 const Signup = (props) => {
-
   const [user,setUser] = useState({
     name: '',
     surname: '',
@@ -16,18 +17,8 @@ const Signup = (props) => {
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
-    
-
-    props.signup({user})
-      .then(() => {
-        setUser({
-            name: '',
-            surname: '',
-            email: '',
-            password: '',
-            userType: '',
-        });
-      })
+    props.signup(user)
+      .then()
       .catch( error => console.log(error) )
   }
 
@@ -39,39 +30,54 @@ const Signup = (props) => {
   const handleSelectUserType = (userType) => {
     setUser({
       ...user,
+      form: true,
       userType,
-      form: true
     })
   }
+  
+  
+  return (
+    <div className="login">
+      <WikiEm className="logo"/>
+        <div className="login-content">
+          {!user.form && user.userType === null ? 
+            <section className="user-types">
+              <button className="login-tab">SIGN UP</button>
+              <section className="signup-card">
+                <div className="usertype-traveller-img"></div>
+                <p>I'm a <span className="span-title">Traveler</span></p>
+                <button className="arrow" onClick={() => handleSelectUserType('traveller')}>></button>
+              </section>
+              <section className="signup-card">
+              <div className="usertype-volunteer-img"></div>
+                <p>I'm a <span className="span-title">Volunteer</span></p>
+                <button className="arrow" onClick={() => handleSelectUserType('volunteer')}>></button>
+              </section>
+            </section>
+            : <>
+              <button className="login-tab">SIGN UP</button>
+              {user.userType ? <p>I want to be a <span className="span-title">{user.userType}!</span></p> : null}
+              <form className="signup-form" onSubmit={(e)=>handleFormSubmit(e)}>
+                <label className="label" htmlFor='name'>Name</label>
+                <input className="input" id='name' type='text' name='name' value={user.name} onChange={(e)=>handleChange(e)}/>
+                <label className="label" htmlFor=''>Surname</label>
+                <input className="input" id='surname' type='text' name='surname' value={user.surname} onChange={(e)=>handleChange(e)}/>
+                <label className="label" htmlFor=''>Email</label>
+                <input className="input" id='email' type='email' name='email' value={user.email} onChange={(e)=>handleChange(e)}/>
+                <label className="label" htmlFor='password'>Password</label>
+                <input className="input" id='password' type='password' name='password' value={user.password} onChange={(e)=>handleChange(e)} />
+                <button className="signup-button-submit" type='submit'>SIGN IN</button>
+              </form>
+              </>
+          }
+              <div>
+                <p>Already have an account? 
+                  <Link className="small-title" to={'/login'}>LOG IN</Link>
+                </p>
+              </div>
+          </div>
 
-    
-    return (
-      <>
-      {!user.form && user.userType === null ? 
-        <section>
-          <button onClick={() => handleSelectUserType('traveller')}>Traveller</button>
-          <button onClick={() => handleSelectUserType('volunteer')}>Volunteer</button>
-        </section>
-        :
-        <form onSubmit={(e)=>handleFormSubmit(e)}>
-          <label htmlFor='name'>Name:</label>
-          <input id='name' type='text' name='name' value={user.name} onChange={(e)=>handleChange(e)}/>
-          <label htmlFor=''>Surname:</label>
-          <input id='surname' type='text' name='surname' value={user.surname} onChange={(e)=>handleChange(e)}/>
-          <label htmlFor=''>Email:</label>
-          <input id='email' type='email' name='email' value={user.email} onChange={(e)=>handleChange(e)}/>
-          <label htmlFor='password'>Password:</label>
-          <input id='password' type='password' name='password' value={user.password} onChange={(e)=>handleChange(e)} />
-          <label htmlFor='needs'>What's your needs:</label>
-          <input type='submit' value='Signup' /> 
-        </form>
-      }
-        <p>Already have account? 
-          <Link to={'/login'}> Login</Link>
-        </p>
-
-      </>
-    )
+    </div>    )
   
 }
 

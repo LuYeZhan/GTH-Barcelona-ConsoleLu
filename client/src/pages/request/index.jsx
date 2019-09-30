@@ -1,11 +1,11 @@
 import React from 'react'
 
-const Landing = () => {
+const Request = () => {
   return (
     <div>
-      hola
+      
     </div>
   )
 }
 
-export default Landing
+export default Request
