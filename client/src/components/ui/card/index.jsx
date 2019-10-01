@@ -20,6 +20,7 @@ const Card = (props) => {
     })
   }
   const checkChat = (idUser) =>{
+    console.log(idUser)
     apiService.checkchat([props.user,idUser ])
         .then(res => {
           props.history.push(`/chat/${res.data._id}`);
